@@ -1,0 +1,27 @@
+# 个人数据：数据库、封面、备份、日志、配置（不要上传）
+data/
+
+# 测试用的数据集 / 自己的表格（观番史.xlsx、导出的 Excel 等）
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+*.db
+*.db-journal
+*.log
+
+# 打包产物
+build/
+dist/
+*.lnk
+data_path.txt
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 编辑器 / 其他
+.vscode/
+.idea/
+Claude outputs/

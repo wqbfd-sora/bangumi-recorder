@@ -1,0 +1,2 @@
+t2s.json 由 OpenCC 的 TSCharacters.txt 与 JPVariants.txt 生成（逐字的繁体/日文新字体 → 简体对照）。
+OpenCC: https://github.com/BYVoid/OpenCC  —  Apache License 2.0
