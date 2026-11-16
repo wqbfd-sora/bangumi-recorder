@@ -6,17 +6,29 @@ if not defined VER goto :error
 set "APP=dist\Bangumi Recorder %VER%"
 echo Building Bangumi Recorder %VER%
 
-echo [1/3] Installing dependencies and PyInstaller...
+echo [1/4] Installing dependencies and PyInstaller...
 python -m pip install -r requirements.txt pyinstaller
 if errorlevel 1 goto :error
 
 echo.
-echo [2/3] Building, this takes 1-3 minutes...
+echo [2/4] Building, this takes 1-3 minutes...
 python -m PyInstaller --noconfirm --clean "Bangumi Recorder.spec"
 if errorlevel 1 goto :error
 
 echo.
-echo [3/3] Pointing the exe at this project's data folder...
+echo [3/4] Packing a zip for GitHub Releases...
+rem Made before data_path.txt and the shortcut are added: those only make sense on this computer
+set "APPFULL=%~dp0%APP%"
+set "ZIP=%~dp0dist\Bangumi-Recorder-%VER%-windows.zip"
+powershell -NoProfile -Command "Compress-Archive -LiteralPath $env:APPFULL -DestinationPath $env:ZIP -Force"
+if errorlevel 1 (
+    echo Could not make the zip. The program itself is fine.
+) else (
+    echo Zip: dist\Bangumi-Recorder-%VER%-windows.zip
+)
+
+echo.
+echo [4/4] Pointing the exe at this project's data folder...
 python -c "import pathlib,sys; pathlib.Path(sys.argv[1]).write_text(sys.argv[2], encoding='utf-8')" "%APP%\data_path.txt" "%~dp0data"
 if errorlevel 1 goto :error
 

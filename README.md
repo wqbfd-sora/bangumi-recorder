@@ -131,6 +131,8 @@ dist\Bangumi Recorder <版本号>\Bangumi Recorder.exe
 
 文件夹名里带版本号（例如「Bangumi Recorder 1.0.2」），每个版本打包到各自的文件夹，旧版本的文件夹不用了可以直接删掉。
 
+同时还会生成 `dist\Bangumi-Recorder-<版本号>-windows.zip`，用来上传到 GitHub Releases 给别人下载。这个 zip 是在写入 `data_path.txt` 和快捷方式**之前**打的包，里面不含你电脑上的路径；别人解压后运行，数据会放在 exe 旁边的 `data\` 文件夹。
+
 - exe 和 `python run.py` **共用同一个数据库**：打包时会在 exe 旁边写一个 `data_path.txt`，指向项目里的 `data\` 文件夹。
   想让 exe 用别的数据文件夹，改这个文件里的路径就行（或者删掉它，exe 就用自己旁边的 `data\`）。
 - 要把程序拷到别处用，复制整个 `dist\Bangumi Recorder <版本号>\` 文件夹，不能只拷 exe。

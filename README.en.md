@@ -150,6 +150,10 @@ dist\Bangumi Recorder <version>\Bangumi Recorder.exe
 The folder name includes the version number (e.g. "Bangumi Recorder 1.0.2"). Each version gets its own folder; delete old
 version folders once you no longer need them.
 
+It also creates `dist\Bangumi-Recorder-<version>-windows.zip` for GitHub Releases. The zip is made **before**
+`data_path.txt` and the shortcut are added, so it contains no paths from your computer; when someone else unzips
+and runs it, their data goes into a `data\` folder next to the .exe.
+
 - The .exe and `python run.py` **share the same database**: the build writes a `data_path.txt` next to
   the .exe pointing at the project's `data\` folder. Edit that file to use a different data folder, or
   delete it to make the .exe use a `data\` folder next to itself.
